@@ -30,6 +30,8 @@ resource "aws_security_group" "ssh_access" {
   }
 }
 
+
+
 data "aws_ami" "amazon_linux" {
   most_recent = true
 
@@ -47,9 +49,9 @@ data "aws_ami" "amazon_linux" {
 }
 
 resource "aws_instance" "vm_us_east_2" {
-  ami           = data.aws_ami.amazon_linux.id
-  instance_type = "t3.micro"
-  security_groups = [aws_security_group.ssh_access.name]
+  ami                    = data.aws_ami.amazon_linux.id
+  instance_type          = "t3.micro"
+  security_groups        = [aws_security_group.ssh_access.name]
   associate_public_ip_address = true
 
   tags = {
